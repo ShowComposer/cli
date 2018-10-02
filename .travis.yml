@@ -1,8 +1,10 @@
 language: nodejs
+
 node_js:  
   - 9
   - 8
   - node 
+  
 before_script:
   - npm ci
   - npm run build
