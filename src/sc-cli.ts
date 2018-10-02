@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-console.log("sc-cli v. 0.0.1");
+import pkg from "../package.json";
+console.log("ShowComposer CLI version "+pkg.version);
