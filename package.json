@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/ShowComposer/sc-cli/issues"
   },
-  "homepage": "https://github.com/ShowComposer/sc-cli#readme"
+  "homepage": "https://github.com/ShowComposer/sc-cli#readme",
+  "devDependencies": {
+    "typescript": "^3.1.1"
+  }
 }
