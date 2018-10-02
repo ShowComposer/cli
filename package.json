@@ -1,0 +1,23 @@
+{
+  "name": "sc-cli",
+  "version": "0.0.1-dev.0",
+  "description": "CLI tools for ShowComposer",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShowComposer/sc-cli.git"
+  },
+  "keywords": [
+    "ShowComposer",
+    "CLI",
+    "Tools"
+  ],
+  "author": "Marvin Gaube",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ShowComposer/sc-cli/issues"
+  },
+  "homepage": "https://github.com/ShowComposer/sc-cli#readme"
+}
