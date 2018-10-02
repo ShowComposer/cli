@@ -1,11 +1,9 @@
-language: nodejs
+language: node_js
 node_js:
-  - "node"
-  - "8"
+    - "lts/*"  
 before_script:
-  - npm run setup
+  - npm ci
   - npm run build
-
 script:
   - npm run test
 
