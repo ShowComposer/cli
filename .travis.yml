@@ -1,6 +1,6 @@
 language: nodejs
 before_script:
-  - npm run setup
+  - npm ci
   - npm run build
 
 script:
