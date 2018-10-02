@@ -1,6 +1,6 @@
 language: nodejs
 node_js:
-  - "iojs"
+  - "node"
   - "8"
 before_script:
   - npm run setup
