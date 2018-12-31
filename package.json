@@ -1,6 +1,6 @@
 {
   "name": "@showcomposer/cli",
-  "version": "0.0.1-dev.5",
+  "version": "0.0.1-dev.6",
   "description": "CLI tools for ShowComposer",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 0",
