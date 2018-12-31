@@ -9,13 +9,14 @@
     "setup": "npm ci",
     "incDevVersion": "npm version prerelease"
   },
+  "main": "./dist/sc-cli.js",
   "bin": {
     "sc": "./dist/sc-cli.js"
   },
   "preferGlobal": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ShowComposer/sc-cli.git"
+    "url": "git+https://github.com/ShowComposer/cli.git"
   },
   "keywords": [
     "ShowComposer",
