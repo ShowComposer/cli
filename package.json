@@ -28,9 +28,9 @@
   "author": "Marvin Gaube",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ShowComposer/sc-cli/issues"
+    "url": "https://github.com/ShowComposer/cli/issues"
   },
-  "homepage": "https://github.com/ShowComposer/sc-cli#readme",
+  "homepage": "https://github.com/ShowComposer/cli#readme",
   "devDependencies": {
     "@types/node": "^10.14.7",
     "pkg": "^4.4.0",
