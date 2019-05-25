@@ -1,4 +1,8 @@
 #!/usr/bin/env node
+import { Datalib } from "@showcomposer/datalib";
+
+const data = new Datalib();
+import get = require("get-value");
 
 import * as cli from "commander";
 // tslint:disable-next-line
@@ -8,14 +12,26 @@ const pj = require("../package.json");
 cli.version(pj.version, "-v, --version");
 
 // Connection information
-cli.option("-H, --host", "Host where sc-broker is running, defaults to localhost");
+// cli.option("-H, --host", "Host where sc-broker is running, defaults to localhost");
 
 // Tail
 cli.command("tail [key]").description("streams all state changes and ticks")
-.usage("[key], key is root if undefined").action((key, cmd) => {
-    // ToDo: Better output
-    // tslint:disable-next-line no-console
-    console.log("Observing " + key);
+.usage("[key], key is system if undefined").action((key, cmd) => {
+    if (!key) {
+      key = "system";
+    }
+    const dEvent = data.subscribe(key);
+    // Subscribe to changes
+    dEvent.on("data", (k) => {
+        console.log(k + "=" + get(data.data, k));
+    });
   });
 
 cli.parse(process.argv);
+
+// Display help on empty command
+const NO_COMMAND_SPECIFIED = cli.args.length === 0;
+
+if (NO_COMMAND_SPECIFIED) {
+  cli.help();
+}
