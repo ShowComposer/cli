@@ -4,6 +4,7 @@ import { Datalib } from "@showcomposer/datalib";
 const data = new Datalib();
 import get = require("get-value");
 
+import chalk = require("chalk");
 import * as cli from "commander";
 // tslint:disable-next-line
 const pj = require("../package.json");
@@ -23,7 +24,7 @@ cli.command("tail [key]").description("streams all state changes and ticks")
     const dEvent = data.subscribe(key);
     // Subscribe to changes
     dEvent.on("data", (k) => {
-        console.log(k + "=" + get(data.data, k));
+        console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(get(data.data, k)));
     });
   });
 

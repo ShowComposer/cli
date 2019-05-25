@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@showcomposer/datalib": "0.0.1-dev.4",
+    "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "get-value": "^3.0.1"
   }
