@@ -28,6 +28,24 @@ cli.command("tail [key]").description("streams all state changes and ticks")
     });
   });
 
+  // Set
+  cli.command("set [key] [value] [type]").description("sets key to value")
+  .usage("[key]=[value], optional [type] (defaults to LIVE)").action((key, value=true, type="LIVE", cmd) => {
+      if (!key) {
+        console.log(chalk.red("Invalid KEY!"));
+        return;
+      }
+      data.set(key, value, type, (m) => {
+        if(m[2]==='0') {
+          console.log("SET "+chalk.green(key) + chalk.grey("=") + chalk.bold(get(data.data, key)));
+          process.exit(0);
+        } else {
+          console.log("Unspecified error");
+          process.exit(1);
+        }
+
+      });
+    });
 cli.parse(process.argv);
 
 // Display help on empty command
