@@ -4,7 +4,7 @@ import { Datalib } from "@showcomposer/datalib";
 const data = new Datalib();
 import get = require("get-value");
 
-import chalk = require("chalk");
+import chalk from 'chalk';
 import * as cli from "commander";
 // tslint:disable-next-line
 const pj = require("../package.json");
