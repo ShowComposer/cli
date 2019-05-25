@@ -33,6 +33,7 @@
   "homepage": "https://github.com/ShowComposer/sc-cli#readme",
   "devDependencies": {
     "@types/node": "^10.14.7",
+    "pkg": "^4.4.0",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
   },
