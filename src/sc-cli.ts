@@ -17,35 +17,46 @@ cli.version(pj.version, "-v, --version");
 
 // Tail
 cli.command("tail [key]").description("streams all state changes and ticks")
-.usage("[key], key is system if undefined").action((key, cmd) => {
+  .usage("[key], key is system if undefined").action((key, cmd) => {
     if (!key) {
       key = "system";
     }
     const dEvent = data.subscribe(key);
     // Subscribe to changes
     dEvent.on("data", (k) => {
-        console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(get(data.data, k)));
+      console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(get(data.data, k)));
     });
   });
 
-  // Set
+// Set
 cli.command("set [key] [value] [type]").description("sets key to value")
-  .usage("[key]=[value], optional [type] (defaults to LIVE)").action((key, value= true, type= "LIVE", cmd) => {
-      if (!key) {
-        console.log(chalk.red("Invalid KEY!"));
-        return;
+  .usage("[key]=[value], optional [type] (defaults to LIVE)").action((key, value = true, type = "LIVE", cmd) => {
+    if (!key) {
+      console.log(chalk.red("Invalid KEY!"));
+      return;
+    }
+    data.set(key, value, type, (m) => {
+      if (m[2] === "0") {
+        console.log("SET " + chalk.green(key) + chalk.grey("=") + chalk.bold(get(data.data, key)));
+        data.end();
+      } else {
+        console.log("Unspecified error");
+        process.exit(1);
       }
-      data.set(key, value, type, (m) => {
-        if (m[2] === "0") {
-          console.log("SET " + chalk.green(key) + chalk.grey("=") + chalk.bold(get(data.data, key)));
-          data.end();
-        } else {
-          console.log("Unspecified error");
-          process.exit(1);
-        }
 
-      });
     });
+  });
+// DUMP
+cli.command("dump [key]").description("displays all values under the key")
+  .usage("[key]").action((key, cmd) => {
+    if (!key) {
+      console.log(chalk.red("Invalid KEY!"));
+      return;
+    }
+    data.dump(key, (m) => {
+      console.log(m);
+    });
+  });
 cli.parse(process.argv);
 
 // Display help on empty command
