@@ -55,6 +55,7 @@ cli.command("dump [key]").description("displays all values under the key")
     }
     data.dump(key, (m) => {
       console.log(m);
+      data.end();
     });
   });
 cli.parse(process.argv);
