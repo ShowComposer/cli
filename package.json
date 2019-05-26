@@ -13,7 +13,7 @@
   },
   "main": "./dist/sc-cli.js",
   "bin": {
-    "sc": "./dist/sc-cli.js"
+    "showc": "./dist/sc-cli.js"
   },
   "preferGlobal": true,
   "repository": {
