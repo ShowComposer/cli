@@ -24,7 +24,14 @@ cli.command("tail [key]").description("streams all state changes and ticks")
     const dEvent = data.subscribe(key);
     // Subscribe to changes
     dEvent.on("data", (k) => {
-      console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(get(data.data, k)));
+      let displaydata = get(data.data, k);
+      if(typeof displaydata === "object") {
+        displaydata = JSON.stringify(displaydata);
+      }
+      if(typeof displaydata !== "string") {
+        displaydata = displaydata.toString();
+      }
+      console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(displaydata));
     });
   });
 
