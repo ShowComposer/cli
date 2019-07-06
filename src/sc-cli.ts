@@ -25,10 +25,10 @@ cli.command("tail [key]").description("streams all state changes and ticks")
     // Subscribe to changes
     dEvent.on("data", (k) => {
       let displaydata = get(data.data, k);
-      if(typeof displaydata === "object") {
+      if (typeof displaydata === "object") {
         displaydata = JSON.stringify(displaydata);
       }
-      if(typeof displaydata !== "string") {
+      if (typeof displaydata !== "string") {
         displaydata = displaydata.toString();
       }
       console.log(chalk.green(k) + chalk.grey("=") + chalk.bold(displaydata));
@@ -53,6 +53,24 @@ cli.command("set [key] [value] [type]").description("sets key to value")
 
     });
   });
+  // TICK
+cli.command("tick [key]").description("sends tick on key")
+    .usage("[key]").action((key, cmd) => {
+      if (!key) {
+        console.log(chalk.red("Invalid KEY!"));
+        return;
+      }
+      data.set(key, true, "TICK", (m) => {
+        if (m[2] === "0") {
+          console.log("SET " + chalk.green(key) + chalk.grey("=") + chalk.bold(get(data.data, key)));
+          data.end();
+        } else {
+          console.log("Unspecified error");
+          process.exit(1);
+        }
+
+      });
+    });
 // DUMP
 cli.command("dump [key]").description("displays all values under the key")
   .usage("[key]").action((key, cmd) => {
