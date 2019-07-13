@@ -32,13 +32,13 @@
   },
   "homepage": "https://github.com/ShowComposer/cli#readme",
   "devDependencies": {
-    "@types/node": "^10.14.7",
+    "@types/node": "^10.14.12",
     "pkg": "^4.4.0",
-    "tslint": "^5.16.0",
-    "typescript": "^3.4.5"
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.3"
   },
   "dependencies": {
-    "@showcomposer/datalib": "0.0.1-dev.12",
+    "@showcomposer/datalib": "0.0.7",
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
     "get-value": "^3.0.1"
